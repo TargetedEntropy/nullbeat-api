@@ -20,10 +20,10 @@ async def index():
     """
     return RedirectResponse("/docs")
 
+
 @item_router.get("/item")
 async def get_item(request: Request, item_depends=Depends(ItemClass)):
-    """Get an item based on filters.
-    """
+    """Get an item based on filters."""
     try:
         item_data = parse.parse_qs(parse.urlsplit(str(request.url)).query)
         return await item_depends.get_item(item_data)
@@ -33,8 +33,6 @@ async def get_item(request: Request, item_depends=Depends(ItemClass)):
 
 @item_router.post("/item")
 async def set_item(request: Request, item_depends=Depends(ItemClass)):
-    """Add an item
-    """
+    """Add an item"""
     item_data = await request.json()
     return await item_depends.set_item(item_data)
-

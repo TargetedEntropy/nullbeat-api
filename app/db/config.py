@@ -18,7 +18,7 @@ metadata = sqlalchemy.MetaData()
 
 # Define the DSN, check if in test mode
 if "pytest" in sys.modules:
-    DB_FILE = 'test.db'
+    DB_FILE = "test.db"
     try:
         remove(DB_FILE)
     except OSError:

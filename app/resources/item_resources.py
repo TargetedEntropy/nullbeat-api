@@ -20,7 +20,7 @@ class ItemClass:
         Parameters
         ----------
         ItemDAL : class
-        
+
         The item data access layer
         """
         self.ItemDAL = ItemDAL
@@ -35,6 +35,5 @@ class ItemClass:
         return await self.ItemDAL.get_item(item_data)
 
     async def set_item(self, item_data: str):
-        """Add an Item
-        """
+        """Add an Item"""
         return await self.ItemDAL.set_item(item_data)

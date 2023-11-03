@@ -2,9 +2,13 @@
 
     Item DataLayer, access to the database directly from routed functions.
 """
+import json
 from datetime import datetime
 from db.config import db_session
 from db.schema.item_schema import ItemModel
+from db.schema.contents_schema import ContentsModel
+from db.tables.item_table import ItemTable
+from db.tables.contents_table import ContentsTable
 import sqlalchemy as sa
 
 
@@ -48,11 +52,21 @@ class ItemDAL:
 
     async def set_item(self, item_data: str):
         """Save an Item
-        
+
         Args:
             item_data (str): Information we have about an item
 
         Returns:
             str: Repeat the information we were provided
         """
-        pass
+        print(f"Inserting Values: {item_data['item_name']}")
+        item = ItemModel(
+            item_name=item_data["item_name"],
+            item_contents=json.dumps(item_data["item_contents"]),
+            character_name=item_data["character_name"],
+        )
+
+        print(f"Item: {item}")
+        self.db_session.add(item)
+        self.db_session.commit()
+        return "Success"
