@@ -9,6 +9,7 @@ ItemTable = sqlalchemy.Table(
     sqlalchemy.Column("item_name", sqlalchemy.String),
     sqlalchemy.Column("item_contents", sqlalchemy.String),
     sqlalchemy.Column("character_name", sqlalchemy.String),
+    sqlalchemy.Column("nbt_data", sqlalchemy.String),
 )
 
 

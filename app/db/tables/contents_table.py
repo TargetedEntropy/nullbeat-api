@@ -6,6 +6,7 @@ ContentsTable = sqlalchemy.Table(
     "contents",
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
+    sqlalchemy.Column("shulker_id", sqlalchemy.Integer),
     sqlalchemy.Column("item_slot", sqlalchemy.Integer),
     sqlalchemy.Column("item_count", sqlalchemy.Integer),
     sqlalchemy.Column("item_id", sqlalchemy.String),

@@ -3,7 +3,6 @@
     Item DataLayer, access to the database directly from routed functions.
 """
 import json
-from datetime import datetime
 from db.config import db_session
 from db.schema.item_schema import ItemModel
 from db.schema.contents_schema import ContentsModel
@@ -59,14 +58,32 @@ class ItemDAL:
         Returns:
             str: Repeat the information we were provided
         """
-        print(f"Inserting Values: {item_data['item_name']}")
+        print(f"Inserting Values: {item_data}")
         item = ItemModel(
             item_name=item_data["item_name"],
             item_contents=json.dumps(item_data["item_contents"]),
             character_name=item_data["character_name"],
+            nbt_data=item_data["nbt_data"]
         )
 
-        print(f"Item: {item}")
         self.db_session.add(item)
         self.db_session.commit()
+        self.db_session.flush()
+        
+        print(f"item_id: {item.id}")
+
+        for item_content in item_data["item_contents"]:
+            
+            print(f"Inserting Values: {item_content}")
+            contents = ContentsModel(
+                shulker_id = item.id,
+                item_slot = item_content["Slot"],
+                item_count=item_content["Count"],
+                item_id = item_content["id"]
+            )
+            self.db_session.add(contents)
+            self.db_session.commit()
+
+                
+
         return "Success"

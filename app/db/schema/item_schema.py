@@ -18,6 +18,7 @@ class ItemModel(Base):
     item_name = Column(String)
     item_contents = Column(String)
     character_name = Column(String)
+    nbt_data = Column(String)
 
     class Conifg:
         orm_mode = True

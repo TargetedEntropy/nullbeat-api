@@ -1,4 +1,4 @@
-""" Contents Schema
+""" Job Schema
     Request/Response format
 """
 
@@ -6,19 +6,19 @@ from sqlalchemy import Column, Integer, String, DateTime
 from db.config import Base
 
 
-class ContentsModel(Base):
-    """The final Item Model
+class JobModel(Base):
+    """The Job Model
 
     This is our final source of truth.
 
     """
 
-    __tablename__ = "contents"
+    __tablename__ = "job"
     id = Column(Integer, primary_key=True)
-    shulker_id = Column(Integer)
-    item_slot = Column(Integer)
-    item_count = Column(Integer)
-    item_id = Column(String)
+    # item_name = Column(String)
+    # item_contents = Column(String)
+    # character_name = Column(String)
+    # nbt_data = Column(String)
 
     class Conifg:
         orm_mode = True
