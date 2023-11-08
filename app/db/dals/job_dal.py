@@ -5,10 +5,9 @@
 import json
 from datetime import datetime
 from db.config import db_session
-from db.schema.job_schema import JobModel
+from db.schema.job_schema import JobSchema
+from db.models.job_model import JobModel
 from db.schema.contents_schema import ContentsModel
-from db.tables.job_table import JobTable
-from db.tables.contents_table import ContentsTable
 import sqlalchemy as sa
 
 
@@ -51,7 +50,7 @@ class JobDAL:
         return results
 
     async def set_job(self, data: str):
-        """Save an Job
+        """Update a
 
         Args:
             job_data (str): Information we have about an job
@@ -60,31 +59,17 @@ class JobDAL:
             str: Repeat the information we were provided
         """
         print(f"Inserting Values: {data}")
-        job = JobModel(
-            job_name=data["job_name"],
-            job_contents=json.dumps(data["job_contents"]),
-            character_name=data["character_name"],
-            nbt_data=data["nbt_data"]
+        job = JobSchema(
+            job_type = data.job_type,
+            job_completed=data.job_completed,
+            character_name=data.character_name,
+            nbt_data=json.dumps(data.nbt_data)
         )
+        print(f"data: {job}")
 
         self.db_session.add(job)
         self.db_session.commit()
         self.db_session.flush()
-        
-        print(f"job_id: {job.id}")
-
-        for job_content in data["job_contents"]:
-            
-            print(f"Inserting Values: {job_content}")
-            contents = ContentsModel(
-                shulker_id = job.id,
-                job_slot = job_content["Slot"],
-                job_count=job_content["Count"],
-                job_id = job_content["id"]
-            )
-            self.db_session.add(contents)
-            self.db_session.commit()
-
                 
 
         return "Success"

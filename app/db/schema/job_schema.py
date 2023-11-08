@@ -2,11 +2,11 @@
     Request/Response format
 """
 
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, Boolean
 from db.config import Base
 
 
-class JobModel(Base):
+class JobSchema(Base):
     """The Job Model
 
     This is our final source of truth.
@@ -15,9 +15,11 @@ class JobModel(Base):
 
     __tablename__ = "job"
     id = Column(Integer, primary_key=True)
-    # item_name = Column(String)
-    # item_contents = Column(String)
-    # character_name = Column(String)
+    job_type = Column(String)
+    character_name = Column(String)
+    job_completed = Column(Boolean)
+    nbt_data = Column(String)
+
     # nbt_data = Column(String)
 
     class Conifg:

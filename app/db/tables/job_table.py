@@ -6,10 +6,11 @@ JobTable = sqlalchemy.Table(
     "job",
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    # sqlalchemy.Column("item_name", sqlalchemy.String),
-    # sqlalchemy.Column("item_contents", sqlalchemy.String),
-    # sqlalchemy.Column("character_name", sqlalchemy.String),
-    # sqlalchemy.Column("nbt_data", sqlalchemy.String),
+    
+    sqlalchemy.Column("job_type", sqlalchemy.String),
+    sqlalchemy.Column("character_name", sqlalchemy.String),
+    sqlalchemy.Column("job_completed", sqlalchemy.Boolean),
+    sqlalchemy.Column("nbt_data", sqlalchemy.String)
 )
 
 
