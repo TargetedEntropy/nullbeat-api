@@ -44,7 +44,7 @@ class CharacterDAL:
         return results
 
     async def set_character(self, data: str):
-        """Update a
+        """Create a character
 
         Args:
             character_data (str): Information we have about an character

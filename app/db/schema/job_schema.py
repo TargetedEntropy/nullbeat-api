@@ -20,7 +20,6 @@ class JobSchema(Base):
     job_completed = Column(Boolean)
     nbt_data = Column(String)
 
-    # nbt_data = Column(String)
 
     class Conifg:
         orm_mode = True
