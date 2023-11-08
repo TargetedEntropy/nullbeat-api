@@ -7,6 +7,7 @@ from db.config import db_session
 from db.schema.item_schema import ItemModel
 from db.schema.contents_schema import ContentsModel
 from db.tables.item_table import ItemTable
+from db.tables.job_table import JobTable
 from db.tables.contents_table import ContentsTable
 import sqlalchemy as sa
 

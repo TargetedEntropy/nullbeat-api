@@ -42,9 +42,9 @@ class JobDAL:
             str: json about our job
         """
 
-        query = self.db_session.query(JobModel)
-        for attr, value in data.jobs():
-            query = query.filter(getattr(JobModel, attr) == value)
+        query = self.db_session.query(JobSchema)
+        # for attr, value in data.jobs():
+        #     query = query.filter(getattr(JobSchema, attr) == value)
 
         results = query.all()
         return results
@@ -67,9 +67,7 @@ class JobDAL:
         )
         print(f"data: {job}")
 
-        self.db_session.add(job)
-        self.db_session.commit()
-        self.db_session.flush()
-                
+        print(self.db_session.add(job))
+        print(self.db_session.commit())
 
         return "Success"
