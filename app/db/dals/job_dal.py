@@ -6,8 +6,7 @@ import json
 from datetime import datetime
 from db.config import db_session
 from db.schema.job_schema import JobSchema
-from db.models.job_model import JobModel
-from db.schema.contents_schema import ContentsModel
+from db.tables.job_table import JobTable
 import sqlalchemy as sa
 
 
@@ -29,14 +28,11 @@ class JobDAL:
         """
         self.db_session = db_session
 
-    async def get_job(self, data):
+    async def get_job(self):
         """Get info for a job
 
         This is where we finally ask the database
         itself about our job..
-
-        Args:
-            data (str): The job identifier
 
         Returns:
             str: json about our job
@@ -44,7 +40,7 @@ class JobDAL:
 
         query = self.db_session.query(JobSchema)
         # for attr, value in data.jobs():
-        #     query = query.filter(getattr(JobSchema, attr) == value)
+        query = query.filter(JobSchema.job_completed == False)
 
         results = query.all()
         return results

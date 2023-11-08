@@ -25,14 +25,14 @@ class JobClass:
         """
         self.JobDAL = JobDAL
 
-    async def get_job(self, data):
+    async def get_job(self):
         """Get a job
 
         Return any and all infomration we have
         about a job.
 
         """
-        return await self.JobDAL.get_job(data)
+        return await self.JobDAL.get_job()
 
 
     async def set_job(self, data: str):

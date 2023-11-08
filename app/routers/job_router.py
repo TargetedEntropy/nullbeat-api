@@ -10,11 +10,10 @@ from db.models.job_model import JobModel
 job_router = APIRouter()
 
 @job_router.get("/job")
-async def get_job(request: Request, job_depends=Depends(JobClass)):
+async def get_job(job_depends=Depends(JobClass)):
     """Get an job based on filters."""
     try:
-        job_data = parse.parse_qs(parse.urlsplit(str(request.url)).query)
-        return await job_depends.get_job(job_data)
+        return await job_depends.get_job()
     except Exception as error:
         return error
 
