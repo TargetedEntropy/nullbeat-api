@@ -9,6 +9,7 @@ from db.models.character_model import CharacterModel
 
 character_router = APIRouter()
 
+
 @character_router.get("/character")
 async def get_character(character_depends=Depends(CharacterClass)):
     """Get an character based on filters."""
@@ -19,7 +20,9 @@ async def get_character(character_depends=Depends(CharacterClass)):
 
 
 @character_router.post("/character")
-async def set_character(character: CharacterModel, character_depends=Depends(CharacterClass)):
+async def set_character(
+    character: CharacterModel, character_depends=Depends(CharacterClass)
+):
     """Add an character"""
     # character_data = await request.json()
     return await character_depends.set_character(character)

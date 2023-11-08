@@ -12,6 +12,7 @@ class CharacterSchema(Base):
     This is our final source of truth.
 
     """
+
     __tablename__ = "character"
     id = Column(Integer, primary_key=True)
     character_name = Column(String)

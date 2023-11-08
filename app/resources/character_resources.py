@@ -34,7 +34,6 @@ class CharacterClass:
         """
         return await self.CharacterDAL.get_character()
 
-
     async def set_character(self, data: str):
         """Create a Character"""
         return await self.CharacterDAL.set_character(data)

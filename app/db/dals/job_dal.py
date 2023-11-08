@@ -56,10 +56,10 @@ class JobDAL:
         """
         print(f"Inserting Values: {data}")
         job = JobSchema(
-            job_type = data.job_type,
+            job_type=data.job_type,
             job_completed=data.job_completed,
             character_name=data.character_name,
-            nbt_data=json.dumps(data.nbt_data)
+            nbt_data=json.dumps(data.nbt_data),
         )
         print(f"data: {job}")
 

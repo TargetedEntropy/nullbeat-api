@@ -17,4 +17,3 @@ logging.debug("Loading routers")
 app.include_router(item_router)
 app.include_router(job_router)
 app.include_router(character_router)
-

@@ -1,4 +1,3 @@
-
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -13,4 +12,4 @@ class CharacterModel(BaseModel):
     account_type: Optional[str]
 
     class Config:
-        orm_mode = True    
+        orm_mode = True

@@ -7,6 +7,7 @@ from db.config import db_session
 from db.schema.character_schema import CharacterSchema
 from db.tables.character_table import CharacterTable
 
+
 class CharacterDAL:
     """A class to interact with the character model in the DB
 
@@ -53,9 +54,9 @@ class CharacterDAL:
         """
         print(f"Inserting Values: {data}")
         character = CharacterSchema(
-            character_name = data.character_name,
+            character_name=data.character_name,
             character_pass=data.character_pass,
-            account_type=data.account_type
+            account_type=data.account_type,
         )
         print(f"data: {character}")
 

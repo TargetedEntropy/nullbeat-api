@@ -9,6 +9,7 @@ from db.models.job_model import JobModel
 
 job_router = APIRouter()
 
+
 @job_router.get("/job")
 async def get_job(job_depends=Depends(JobClass)):
     """Get an job based on filters."""

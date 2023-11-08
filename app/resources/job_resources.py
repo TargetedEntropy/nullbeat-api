@@ -34,7 +34,6 @@ class JobClass:
         """
         return await self.JobDAL.get_job()
 
-
     async def set_job(self, data: str):
         """Update a Job"""
         return await self.JobDAL.set_job(data)

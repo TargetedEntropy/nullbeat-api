@@ -20,8 +20,6 @@ async def get_item_dal():
     yield ItemDAL(db_session)
 
 
-
-
 async def get_job_dal():
     """Access the basic db job functions
 
@@ -34,8 +32,6 @@ async def get_job_dal():
 
     """
     yield JobDAL(db_session)
-
-
 
 
 async def get_character_dal():
