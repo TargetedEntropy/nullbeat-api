@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from routers.item_router import item_router
 from routers.job_router import job_router
 from routers.character_router import character_router
+from routers.stats_router import stats_router
 
 import logging
 
@@ -17,3 +18,5 @@ logging.debug("Loading routers")
 app.include_router(item_router)
 app.include_router(job_router)
 app.include_router(character_router)
+app.include_router(stats_router)
+

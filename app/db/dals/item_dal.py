@@ -57,7 +57,6 @@ class ItemDAL:
         Returns:
             str: Repeat the information we were provided
         """
-        print(f"Inserting Values: {item_data}")
         item = ItemModel(
             item_name=item_data["item_name"],
             item_contents=json.dumps(item_data["item_contents"]),
@@ -69,11 +68,8 @@ class ItemDAL:
         self.db_session.commit()
         self.db_session.flush()
 
-        print(f"item_id: {item.id}")
-
         for item_content in item_data["item_contents"]:
 
-            print(f"Inserting Values: {item_content}")
             contents = ContentsModel(
                 shulker_id=item.id,
                 item_slot=item_content["Slot"],
@@ -84,3 +80,29 @@ class ItemDAL:
             self.db_session.commit()
 
         return "Success"
+
+
+    def get_count(q):
+        count_q = q.statement.with_only_columns([func.count()]).order_by(None)
+        count = q.session.execute(count_q).scalar()
+        return count
+
+
+    async def get_stats(self):
+        """Get info for an item
+
+        This is where we finally ask the database
+        itself about our item..
+
+        Args:
+            item_data (str): The item identifier
+
+        Returns:
+            str: json about our item
+        """
+        fun_time = {}
+        fun_time['Characters Tracked'] = self.db_session.query(ItemModel).distinct(ItemModel.character_name).group_by(ItemModel.character_name).count()
+        fun_time['Total Items'] = self.db_session.query(ContentsModel).count()
+        fun_time['Container Count'] = self.db_session.query(ItemModel).count()
+
+        return fun_time

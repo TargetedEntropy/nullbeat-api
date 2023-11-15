@@ -37,3 +37,8 @@ class ItemClass:
     async def set_item(self, item_data: str):
         """Add an Item"""
         return await self.ItemDAL.set_item(item_data)
+
+
+    async def get_stats(self):
+        """Add an Item"""
+        return await self.ItemDAL.get_stats()

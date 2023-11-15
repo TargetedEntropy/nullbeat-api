@@ -52,7 +52,7 @@ class CharacterDAL:
         Returns:
             str: Repeat the information we were provided
         """
-        print(f"Inserting Values: {data}")
+
         character = CharacterSchema(
             character_name=data.character_name,
             character_pass=data.character_pass,

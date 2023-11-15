@@ -54,7 +54,6 @@ class JobDAL:
         Returns:
             str: Repeat the information we were provided
         """
-        print(f"Inserting Values: {data}")
         job = JobSchema(
             job_type=data.job_type,
             job_completed=data.job_completed,
