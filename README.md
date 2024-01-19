@@ -10,7 +10,7 @@ nullbeat-api is the API component of the nullbeat project, providing a command a
 
 - Items to storage all characters' inventories.
 - Jobs to identify tasks and their ordered execution for the bots.
-- Character call to identify users
+- Character call to identify users.
 - Statistics for overall usage.
 
 Details on the endpoints specifcally are available via the built-in interface at the /docs endpoint of the site.
