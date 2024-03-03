@@ -57,27 +57,20 @@ class ItemDAL:
         Returns:
             str: Repeat the information we were provided
         """
-        item = ItemModel(
-            item_name=item_data["item_name"],
-            item_contents=json.dumps(item_data["item_contents"]),
-            character_name=item_data["character_name"],
-            nbt_data=item_data["nbt_data"],
-        )
+        for item in item_data:
 
-        self.db_session.add(item)
+            new_item = ItemModel(
+                name = item['name'],
+                displayName = item['displayName'],
+                itemGroups = f"{item['itemGroups']}",
+                count = item['count'],
+                maxCount = item['maxCount'],
+                tags = f"{item['tags']}"
+                #nbt = item['nbt']
+            )
+            self.db_session.add(new_item)
         self.db_session.commit()
         self.db_session.flush()
-
-        for item_content in item_data["item_contents"]:
-
-            contents = ContentsModel(
-                shulker_id=item.id,
-                item_slot=item_content["Slot"],
-                item_count=item_content["Count"],
-                item_id=item_content["id"],
-            )
-            self.db_session.add(contents)
-            self.db_session.commit()
 
         return "Success"
 

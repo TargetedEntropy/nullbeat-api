@@ -15,10 +15,14 @@ class ItemModel(Base):
 
     __tablename__ = "item"
     id = Column(Integer, primary_key=True)
-    item_name = Column(String)
-    item_contents = Column(String)
-    character_name = Column(String)
-    nbt_data = Column(String)
+    displayName = Column(String)
+    itemGroups = Column(String)
+    count = Column(Integer)
+    maxCount = Column(Integer)
+    name = Column(String)
+    tags = Column(String)
+    nbt = Column(String, nullable=True)
 
     class Conifg:
         orm_mode = True
+

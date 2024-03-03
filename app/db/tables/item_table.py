@@ -6,10 +6,13 @@ ItemTable = sqlalchemy.Table(
     "item",
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("item_name", sqlalchemy.String),
-    sqlalchemy.Column("item_contents", sqlalchemy.String),
-    sqlalchemy.Column("character_name", sqlalchemy.String),
-    sqlalchemy.Column("nbt_data", sqlalchemy.String),
+    sqlalchemy.Column("displayName", sqlalchemy.String),
+    sqlalchemy.Column("itemGroups", sqlalchemy.String),
+    sqlalchemy.Column("count", sqlalchemy.Integer),
+    sqlalchemy.Column("maxCount", sqlalchemy.Integer),
+    sqlalchemy.Column("name", sqlalchemy.String),
+    sqlalchemy.Column("tags", sqlalchemy.String),
+    sqlalchemy.Column("nbt", sqlalchemy.String, nullable=True)
 )
 
 
