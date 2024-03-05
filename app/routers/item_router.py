@@ -3,6 +3,7 @@
 
 from urllib import parse
 from fastapi import APIRouter, Depends, Request
+from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
 from resources.item_resources import ItemClass
 import re
@@ -50,6 +51,7 @@ def parse_lua_table(lua_bytes):
         lua_table.append(item)
     
     return lua_table
+
 
 
 @item_router.get("/")
